@@ -1,45 +1,53 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Racial Inequality in the United States"
+author: "Mykyta Lepikash"
+date: '2022-11-20'
 output: html_document
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE}
-source("../source/a4-helpers.R")
+```{r include=FALSE}
 source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
+From education, health, and poverty to culture, environmental harm, the economy, and beyond, all aspects of American society are shaped in some way by racial inequity. I am concerned about this topic because it is an important problem that impacts everybody, no matter their skin colour. 
 
 ## Introduction 
-[TODO]
+Racial inequality among black people has long been a blatant circumstance of the American experience. These circumstances range from the horrible realities of African enslavement in the 1700s to the restrictions on human rights and unfair practices such as literacy tests before being permitted housing and voting in the 1950s. Racial inequality in America has been manifested in various forms for centuries. For example, the American criminal legal system was set up to enforce slavery and has been used ever since to over-police and over-arrest people of color, especially Black people. In the modern day, there is a considerable gap between races regarding employment, wealth, being convicted, and even the chances of getting a high score on standardized tests. Reflecting centuries of white privilege has made it difficult for people of color to achieve equal rights and economic security, which impacts and dictates their daily lives. This is a complicated and essential problem affecting society in countless ways, such as crime and employment rates, economic growth, education, healthcare, etc. This report will try to expose the patterns of inequality across the U.S. by using imprisonment jail data
 
 ## Data Summary 
-[TODO]
+In 1985 the total amount of black inmates was `r as.integer(black_jail_pop_1985)`, nowadays the number has changed to the `r as.integer(black_jail_pop_2018)`, and in 35 years, the total number has increased by `r as.integer(black_jail_pop_2018 - as.integer(black_jail_pop_1985))`.This data shows that the problem only worsens over time. Currently, the state with the highest number of black inmates is `r state.name[grep(black_jail_pop_highest_state, state.abb)]`. Even though the state is 8th by the population in the U.S., it has the biggest number of total black inmates, which raises the question of why it happens there and why black people are sentenced and charged there more than anywhere else. 
 
-[TODO ... other sections ... See Canvas for details]
 
-_All the very best with your work!_
+## Growth of the U.S. Prison Population
+```{r echo=FALSE}
+plot_jail_pop_for_us()
+
+```
+
+There are approximately 1 million people in the nation’s jails—a 500% increase over the last 40 years. Changes in sentencing law and policy, not changes in crime rates, explain most of this increase. These trends have resulted in prison overcrowding and fiscal burdens on states to accommodate a rapidly expanding penal system, despite increasing evidence that large-scale incarceration is not an effective means of achieving public safety.
+
+## Growth of Prison Population by States
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+states <- c('CA', 'FL', 'TX', 'NY', 'PA')
+plot_jail_pop_by_states(states)
+```
+
+
+The graph represents the jail population growth in the five states from 1970 to 2018. It shows that for each state, the total jail population was increasing except NY, which has been decreasing since 2000. I chose these five states because they have the highest population. 
+
+
+## Patterns Of Inequality by race in jail 
+```{r echo=FALSE}
+plot_jail_population()
+```
+
+This chart answers how different races spread in jail by region. For each region, it provides a comparison between 3 races. For example, out of all regions, only in the Pacific, there are more Latina people than black and white, indicating racial inequality and asking us why it mainly happens there.  
+
+##  Patterns of Inequality Among Black People By States
+```{r echo=FALSE}
+plot_map_inequality()
+```
+
+This chart shows states with the highest numbers of imprisonment of black people. The top 3 states are Florida, Texas, and California, and the east coast states tend to have more black people in jails than the west coast. All of this above indicates how racial inequality is spread across the country. 
 
